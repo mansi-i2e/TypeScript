@@ -78,3 +78,92 @@
 // };
 // detail_2.func(3, 9);
 // FUNCTIONS
+// type FuncType = (n: number, m: number, l?: number) => number
+// // optional parameter
+// const func: FuncType = (n, m, l) => {
+//     if (typeof l === "undefined") return n * m;
+//     return n * m * l;
+// }
+// func(5, 8);
+// // default parameter
+// type FuncType = (n: number, m: number, l?: number) => number
+// const func: FuncType = (n, m, l = 20) => {
+//     return n * m * l;
+// }
+// func(5, 8);
+// const func1 = (n: number, m: number, l: number = 20): number => {
+//     return n * m * l;
+// }
+// func1(5, 8);
+// rest operator
+// type FuncType = (...m: number[]) => number[]
+// const func: FuncType = (...m) => {
+//     return m;
+// }
+// func(5, 8, 3, 6);
+// // using Function Keyword
+// function my_func(n: number): number {
+//     return 45
+// }
+// // Function Keyword with type aliasis
+// type MyFuncType = (m: number) => number;
+// const my_func_1: MyFuncType = function my_func_1(m) {
+//     return m;
+// }
+// Function with Object
+// interface Product {
+//     name: string; stock: number; price: number; photo: string; readonly id: string;
+// }
+// type getDataType = (product: Product) => void;
+// const getData: getDataType = (product) => {
+//     // product.id="333"   -- not possible
+//     console.log(product);
+// };
+// const productOne: Product = {
+//     name: "Macbook",
+//     stock: 40,
+//     price: 90999,
+//     photo: "sampleurl",
+//     id: "mac-book",
+// }
+// getData(productOne)
+// // Never type
+// const errorHandler = (): never => {
+//     throw new Error();
+// }
+// type themeMode = "light" | "dark";
+// const mode:themeMode = "dark";
+// CLASSES 
+class Student {
+    constructor(id, score, grade) {
+        this.id = id;
+        this.score = score;
+        this.grade = grade;
+        this.regNo = String(Math.random() * 100);
+    }
+    get getStudId() { return this.id; }
+    ;
+    set setId(val) { this.id = val; }
+    ;
+}
+const rahul = new Student(55, 87, "A+");
+// console.log(rahul.id) -- invalid
+// console.log(rahul.grade); -- invalid
+// console.log(rahul.score);
+console.log("Id:", rahul.getStudId);
+rahul.setId = 57;
+console.log("Id:", rahul.getStudId);
+// class Our_Stud extends Student {
+//     scholar: boolean
+//     constructor(id: number, score: number, grade: string, scholar: boolean) {
+//         super(id, score, grade);
+//         this.scholar = scholar;
+//     }
+//     getStudGrade = () => this.grade;
+// }
+// const neha = new Our_Stud(40, 95, "A++", true)
+// console.log("Id:", neha.getStudId());
+// console.log("Score:", neha.score);
+// console.log("Grade:", neha.getStudGrade());
+// console.log("Reg No.:", neha.regNo)
+// // neha.regNo="34.37383" - not possible
